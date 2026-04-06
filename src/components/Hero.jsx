@@ -11,8 +11,15 @@ const Hero = () => {
   return (
     <section 
       className="hero-section" 
-      style={{ backgroundImage: `url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop')` }}
+      style={{ 
+        backgroundImage: `
+          linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+          url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop')
+        ` 
+      }}
     >
+      <img src="/logo-full.png" className="hero-watermark" alt="" />
+
       <div className="container hero-content">
         <div className="row">
           <div className="col-lg-8">

@@ -29,7 +29,7 @@ const Login = () => {
       <div className="card shadow-lg border-0" style={{ width: '100%', maxWidth: '400px' }}>
         <div className="card-body p-5">
           <div className="text-center mb-4">
-            <h3 className="fw-bold text-dark font-serif tracking-wide mb-1">Arkitektur.</h3>
+            <h3 className="fw-bold text-dark font-serif tracking-wide mb-1">AK Constructions</h3>
             <p className="text-muted small text-uppercase" style={{ letterSpacing: '2px' }}>Admin Portal</p>
           </div>
           

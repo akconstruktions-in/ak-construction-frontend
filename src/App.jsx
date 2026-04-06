@@ -9,6 +9,7 @@ import Services from './pages/Services';
 import Projects from './pages/Projects';
 
 import ProtectedRoute from './components/ProtectedRoute';
+import ScrollToTop from './components/ScrollToTop';
 import Login from './pages/admin/Login';
 import ForgotPassword from './pages/admin/ForgotPassword';
 import Dashboard from './pages/admin/Dashboard';
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       <Router>
+        <ScrollToTop />
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<MainLayout />}>

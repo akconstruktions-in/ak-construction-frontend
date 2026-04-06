@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="container text-center text-md-left">
         <div className="row text-center text-md-left">
           <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-            <h5 className="text-uppercase mb-4 font-weight-bold text-gold">Arkitektur.</h5>
+            <h5 className="text-uppercase mb-4 font-weight-bold text-gold">Adiyapuram Kannan (AK) Constructions</h5>
             <p>We build lasting structures with a modern touch. Combining functionality with aesthetics for the ultimate living and working spaces.</p>
           </div>
           

@@ -51,7 +51,7 @@ const About = () => {
             </p>
 
             <p className="fw-semibold">
-              Today, Arkitektur stands on that very foundation—turning ideas into
+              Today, AK Constructions stands on that very foundation—turning ideas into
               meaningful spaces where people live, work, and create memories.
             </p>
 
@@ -62,7 +62,7 @@ const About = () => {
           <div className="col-md-6 text-center">
             <img
                 src="/pic-about3.png"
-                alt="About Arkitektur"
+                alt="About AK Constructions"
                 className="img-fluid rounded shadow"
                 style={{
                   width: "100%",

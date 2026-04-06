@@ -134,7 +134,7 @@ const Dashboard = () => {
       {/* Admin Navbar */}
       <nav className="navbar navbar-dark bg-dark-custom mb-4 shadow">
         <div className="container-fluid px-4">
-          <span className="navbar-brand mb-0 h1 font-serif tracking-widest">Arkitektur. <small className="text-muted ms-2" style={{fontSize: '0.8rem'}}>Admin Panel</small></span>
+          <span className="navbar-brand mb-0 h1 font-serif tracking-widest">AK Constructions <small className="text-muted ms-2" style={{fontSize: '0.8rem'}}>Admin Panel</small></span>
           <button className="btn btn-outline-light btn-sm rounded-0 text-uppercase tracking-wide" onClick={handleLogout}>Log Out</button>
         </div>
       </nav>

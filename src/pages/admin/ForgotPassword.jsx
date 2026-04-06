@@ -73,7 +73,7 @@ const ForgotPassword = () => {
     <div className="d-flex align-items-center justify-content-center min-vh-100 bg-light">
       <div className="card shadow-sm border-0 p-4 p-md-5" style={{ maxWidth: '450px', width: '100%' }}>
         <div className="text-center mb-4">
-          <h2 className="font-serif fw-bold text-dark mb-1">Arkitektur.</h2>
+          <h2 className="font-serif fw-bold text-dark mb-1">AK Constructions</h2>
           <p className="text-muted small">Admin Recovery</p>
         </div>
 

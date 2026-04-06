@@ -84,7 +84,7 @@ const Home = () => {
             <div className="col-lg-6 mb-4 mb-lg-0">
               <SectionTitle 
                 title="Designing the Future, Preserving the Past" 
-                subtitle="About Arkitektur" 
+                subtitle="About AK Constructions" 
               />
               <p className="text-muted mb-4" style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
                 We are a collective of architects, designers, and engineers dedicated to creating spaces that inspire. With over a decade of experience in residential and commercial design, we bridge the gap between aesthetic beauty and everyday functionality.

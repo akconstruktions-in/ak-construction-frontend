@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-custom sticky-top">
       <div className="container">
-        <Link className="navbar-brand" to="/">Arkitektur.</Link>
+        <Link className="navbar-brand" to="/">AK Constructions</Link>
         <button 
           className="navbar-toggler" 
           type="button" 
