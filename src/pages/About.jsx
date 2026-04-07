@@ -8,18 +8,22 @@ const About = () => {
   <meta name="description" content="Learn about AK Constructions, an affordable architect in Kannur delivering creative and functional home designs across Kerala." />
 </Helmet>
       {/* HERO SECTION */}
-      <section className="bg-dark-custom text-white py-5">
-        <div className="container py-5">
-          <div className="row">
-            <div className="col-md-8">
-              <h1 className="display-4 fw-bold">About Us</h1>
-              <p className="lead opacity-75">
-                From a small village dream to designing modern living spaces.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+    <section className="hero-common bg-dark-custom text-white py-5">
+
+  <img src="/logo-gold-2.png" className="hero-logo-bg" alt="logo" />
+
+  <div className="container py-5 position-relative">
+    <div className="row">
+      <div className="col-md-8">
+        <h1 className="display-4 fw-bold">About Us</h1>
+        <p className="lead opacity-75">
+          From a small village dream to designing modern living spaces.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
 
       {/* STORY SECTION */}
       <section className="section-padding container">

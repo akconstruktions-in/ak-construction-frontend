@@ -36,18 +36,25 @@ const Projects = () => {
       <title>Modern House Design Kannur | Our Projects</title>
       <meta name="description" content="Explore modern house design projects in Kannur by AK Constructions, showcasing innovative and affordable architecture." />
     </Helmet>
-      <section className="bg-dark-custom text-white py-5">
-        <div className="container py-5">
-          <div className="row">
-            <div className="col-md-8">
-              <h1 className="display-4 fw-bold">Our Portfolio</h1>
-              <p className="lead opacity-75">Explore our most recent architectural projects across residential and commercial sectors.</p>
-              <p>Explore modern house projects in Kannur by AK Constructions.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
+    <section className="hero-common bg-dark-custom text-white py-5">
+
+  <img src="/logo-gold-2.png" className="hero-logo-bg" alt="logo" />
+
+  <div className="container py-5">
+    <div className="row">
+      <div className="col-md-8">
+        <h1 className="display-4 fw-bold">Our Portfolio</h1>
+        <p className="lead opacity-75">
+          Explore our most recent architectural projects across residential and commercial sectors.
+        </p>
+        <p>
+          Explore modern house projects in Kannur by AK Constructions.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+          
       <section className="section-padding container">
         {loading ? (
           <div className="row g-4 mt-3">

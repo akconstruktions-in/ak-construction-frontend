@@ -7,23 +7,25 @@ const Services = () => {
   <title>Architectural Services in Malabar | AK Constructions</title>
   <meta name="description" content="Professional architectural services in Malabar including home design, interior design, and construction planning." />
 </Helmet>
-      {/* HERO SECTION */}
-      <section className="bg-dark-custom text-white py-5">
-        <div className="container py-5">
-          <div className="row">
-            <div className="col-md-8">
-              <h1 className="display-4 fw-bold">Our Services</h1>
-              <p className="lead opacity-75">
-                Turning ideas into timeless architectural experiences.
-              </p>
-              <p>
-                We provide complete architectural services in Malabar, from concept to final construction.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+<section className="hero-common bg-dark-custom text-white py-5">
 
+  <img src="/logo-gold-2.png" className="hero-logo-bg" alt="logo" />
+
+  <div className="container py-5 position-relative">
+    <div className="row">
+      <div className="col-md-8">
+        <h1 className="display-4 fw-bold">Our Services</h1>
+        <p className="lead opacity-75">
+          Turning ideas into timeless architectural experiences.
+        </p>
+        <p>
+          We provide complete architectural services in Malabar, from concept to final construction.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
       {/* SERVICES SECTION */}
       <section className="section-padding container">
         <SectionTitle title="What We Do" subtitle="Expertise" />
