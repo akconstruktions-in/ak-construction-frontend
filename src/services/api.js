@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Backend API URL
-const VITE_API_URL = 'https://ak-construction-backend.onrender.com/api';
+const VITE_API_URL = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : 'https://ak-construction-backend.onrender.com/api';
 
 // Create an instance
 const api = axios.create({
