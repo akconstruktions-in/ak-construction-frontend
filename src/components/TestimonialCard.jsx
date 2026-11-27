@@ -1,18 +1,25 @@
 const TestimonialCard = ({ testimonial }) => {
   return (
-    <div className="testimonial-card">
-      <div className="d-flex align-items-center mb-4">
-        <div className="text-gold me-3">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.017 21L16.41 14.909C16.634 14.331 16.746 13.722 16.746 13.091V9.273H11V15H14.156L12.564 19.382L14.017 21ZM5.017 21L7.41 14.909C7.634 14.331 7.746 13.722 7.746 13.091V9.273H2V15H5.156L3.564 19.382L5.017 21Z" />
-          </svg>
-        </div>
+    <div className="card-ak p-4 p-md-5 h-100">
+      <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'var(--text-primary)', marginBottom: '20px' }}>
+        "{testimonial.text}"
+      </p>
+      <div className="d-flex align-items-center gap-3">
+        {testimonial.imageUrl && (
+          <img
+            src={testimonial.imageUrl}
+            alt={testimonial.name}
+            width="44"
+            height="44"
+            style={{ borderRadius: '50%', objectFit: 'cover' }}
+            loading="lazy"
+          />
+        )}
         <div>
-          <h5 className="mb-0">{testimonial.name}</h5>
-          <span className="text-muted small">{testimonial.role}</span>
+          <div style={{ fontWeight: 600, fontSize: '15px' }}>{testimonial.name}</div>
+          <div style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>{testimonial.role || 'Verified Client'}</div>
         </div>
       </div>
-      <p className="testimonial-text">"{testimonial.text}"</p>
     </div>
   );
 };
