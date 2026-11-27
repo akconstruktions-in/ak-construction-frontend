@@ -171,7 +171,7 @@ const Home = () => {
           </div>
 
           <div className="row g-4">
-            {SERVICES.slice(0, 6).map((svc) => {
+            {SERVICES.slice(0, 3).map((svc) => {
               const photo = getServicePhoto(svc);
               return (
                 <div className="col-md-6 col-lg-4 reveal" key={svc.slug}>
