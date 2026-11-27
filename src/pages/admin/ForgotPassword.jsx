@@ -10,13 +10,14 @@ const ForgotPassword = () => {
 
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
+  const [resetToken, setResetToken] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleRequestOtp = async (e) => {
     e.preventDefault();
     if (!email) return toast.warn('Please enter your admin email');
-    
+
     setLoading(true);
     try {
       const res = await requestPasswordReset(email);
@@ -39,6 +40,7 @@ const ForgotPassword = () => {
     try {
       const res = await verifyResetOtp(email, otp);
       if (res.success) {
+        setResetToken(res.resetToken || res.data?.resetToken || '');
         toast.success(res.message);
         setStep(3);
       }
@@ -57,7 +59,7 @@ const ForgotPassword = () => {
 
     setLoading(true);
     try {
-      const res = await submitNewPassword(email, newPassword);
+      const res = await submitNewPassword(email, newPassword, resetToken);
       if (res.success) {
         toast.success(res.message);
         navigate('/admin/login');
@@ -71,29 +73,29 @@ const ForgotPassword = () => {
 
   return (
     <div className="d-flex align-items-center justify-content-center min-vh-100 bg-light">
-      <div className="card shadow-sm border-0 p-4 p-md-5" style={{ maxWidth: '450px', width: '100%' }}>
+      <div className="card shadow-sm border-0 p-4 p-md-5" style={{ maxWidth: '450px', width: '100%', borderRadius: 'var(--r-lg)' }}>
         <div className="text-center mb-4">
-          <h2 className="font-serif fw-bold text-dark mb-1">AK Constructions</h2>
+          <h2 className="fw-bold text-dark mb-1" style={{ fontFamily: 'var(--font-display)' }}>AK Constructions</h2>
           <p className="text-muted small">Admin Recovery</p>
         </div>
 
         {step === 1 && (
           <form onSubmit={handleRequestOtp}>
             <h5 className="mb-3">Forgot Password</h5>
-            <p className="text-muted small mb-4">Enter your admin email address and we'll send you a One Time Password (OTP) to reset your password.</p>
+            <p className="text-muted small mb-4">Enter your admin email address and we'll send you a One Time Password (OTP).</p>
             <div className="mb-4">
               <label className="form-label small fw-bold">Email Address</label>
-              <input 
-                type="email" 
-                className="form-control form-control-lg bg-light" 
-                placeholder="admin@arkitektur.com"
+              <input
+                type="email"
+                className="form-control bg-light"
+                placeholder="admin@akconstructionbyraju.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={loading}
               />
             </div>
-            <button type="submit" className="btn btn-gold btn-lg w-100 text-uppercase tracking-wide" disabled={loading}>
-              {loading ? 'Sending...' : 'Send OTP'}
+            <button type="submit" className="btn btn-gold w-100" disabled={loading}>
+              {loading ? 'Sending…' : 'Send OTP'}
             </button>
             <div className="text-center mt-4">
               <Link to="/admin/login" className="text-decoration-none small text-muted">Back to Login</Link>
@@ -104,12 +106,12 @@ const ForgotPassword = () => {
         {step === 2 && (
           <form onSubmit={handleVerifyOtp}>
             <h5 className="mb-3">Verify OTP</h5>
-            <p className="text-muted small mb-4">An OTP has been sent to <strong>{email}</strong>. It will expire in 10 minutes.</p>
+            <p className="text-muted small mb-4">An OTP has been sent to <strong>{email}</strong>.</p>
             <div className="mb-4">
               <label className="form-label small fw-bold">6-Digit OTP</label>
-              <input 
-                type="text" 
-                className="form-control form-control-lg bg-light text-center tracking-widest" 
+              <input
+                type="text"
+                className="form-control bg-light text-center"
                 placeholder="------"
                 maxLength="6"
                 value={otp}
@@ -117,8 +119,8 @@ const ForgotPassword = () => {
                 disabled={loading}
               />
             </div>
-            <button type="submit" className="btn btn-gold btn-lg w-100 text-uppercase tracking-wide" disabled={loading}>
-              {loading ? 'Verifying...' : 'Verify OTP'}
+            <button type="submit" className="btn btn-gold w-100" disabled={loading}>
+              {loading ? 'Verifying…' : 'Verify OTP'}
             </button>
             <div className="text-center mt-4">
               <button type="button" className="btn btn-link text-decoration-none small text-muted p-0" onClick={() => setStep(1)} disabled={loading}>Change Email</button>
@@ -129,12 +131,12 @@ const ForgotPassword = () => {
         {step === 3 && (
           <form onSubmit={handleResetPassword}>
             <h5 className="mb-3">Set New Password</h5>
-            <p className="text-muted small mb-4">Your OTP was verified securely. Please enter your new admin password.</p>
+            <p className="text-muted small mb-4">Your OTP was verified. Please enter your new admin password.</p>
             <div className="mb-3">
               <label className="form-label small fw-bold">New Password</label>
-              <input 
-                type="password" 
-                className="form-control form-control-lg bg-light" 
+              <input
+                type="password"
+                className="form-control bg-light"
                 placeholder="Min 5 characters"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
@@ -143,17 +145,17 @@ const ForgotPassword = () => {
             </div>
             <div className="mb-4">
               <label className="form-label small fw-bold">Confirm Password</label>
-              <input 
-                type="password" 
-                className="form-control form-control-lg bg-light" 
+              <input
+                type="password"
+                className="form-control bg-light"
                 placeholder="Match new password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 disabled={loading}
               />
             </div>
-            <button type="submit" className="btn btn-gold btn-lg w-100 text-uppercase tracking-wide" disabled={loading}>
-              {loading ? 'Updating...' : 'Reset Password'}
+            <button type="submit" className="btn btn-gold w-100" disabled={loading}>
+              {loading ? 'Updating…' : 'Reset Password'}
             </button>
           </form>
         )}

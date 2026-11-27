@@ -1,21 +1,12 @@
-import React from 'react';
-import './SkeletonCard.css';
-
 const SkeletonCard = () => {
   return (
-    <div className="skeleton-card">
-      <div className="skeleton-header">
-        <div className="skeleton-avatar"></div>
-        <div className="skeleton-titles">
-          <div className="skeleton-line skeleton-title"></div>
-          <div className="skeleton-line skeleton-subtitle"></div>
-        </div>
-      </div>
-      <div className="skeleton-content">
-        <div className="skeleton-line"></div>
-        <div className="skeleton-line"></div>
-        <div className="skeleton-line"></div>
-        <div className="skeleton-line w-75"></div>
+    <div className="card-ak overflow-hidden h-100">
+      <div className="skel" style={{ paddingBottom: '66.667%' }} />
+      <div className="p-4">
+        <div className="skel mb-3" style={{ height: '14px', width: '40%' }} />
+        <div className="skel mb-2" style={{ height: '22px', width: '75%' }} />
+        <div className="skel mb-2" style={{ height: '14px', width: '100%' }} />
+        <div className="skel" style={{ height: '14px', width: '65%' }} />
       </div>
     </div>
   );

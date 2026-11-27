@@ -1,56 +1,102 @@
+import { Link } from 'react-router-dom';
+import { ChevronDown, ChevronUp, MapPin, ArrowRight } from 'lucide-react';
+
 const ProjectCardExpandable = ({ project, isExpanded, onToggle }) => {
   return (
-    <div className="card border-0 shadow-sm overflow-hidden h-100 transition-all hover-shadow-lg" style={{ transition: 'all 0.3s ease' }}>
-      <div 
-        className="position-relative cursor-pointer overflow-hidden" 
+    <div className="card-ak h-100 d-flex flex-column">
+      <div
+        className="img-3x2"
         onClick={onToggle}
         style={{ cursor: 'pointer' }}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onToggle(); }}
       >
-        <img 
-          src={project.imageUrl} 
-          alt={project.title} 
-          className="w-100" 
-          style={{ height: '300px', objectFit: 'cover', transition: 'transform 0.5s', transform: isExpanded ? 'scale(1.05)' : 'scale(1)' }} 
+        <img
+          src={project.imageUrl}
+          alt={project.title}
+          loading="lazy"
         />
-        <div className="position-absolute bottom-0 w-100 p-3" style={{ background: 'linear-gradient(transparent, rgba(0,0,0,0.8))' }}>
-          <h4 className="text-white mb-0">{project.title}</h4>
-          {!isExpanded && (
-            <span className="text-gold small text-uppercase" style={{ letterSpacing: '1px' }}>
-              View Details <i className="fas fa-chevron-down ms-1"></i>
+      </div>
+
+      <div className="p-4 flex-grow-1 d-flex flex-column">
+        <div className="d-flex justify-content-between align-items-center mb-2">
+          <span
+            className="px-2 py-1"
+            style={{
+              fontSize: '12px',
+              fontWeight: 500,
+              borderRadius: 'var(--r-sm)',
+              background: project.status === 'completed' ? '#eaf4ec' : 'var(--accent-subtle)',
+              color: project.status === 'completed' ? '#1e6b36' : 'var(--accent-hover)',
+            }}
+          >
+            {project.status === 'completed' ? 'Completed' : 'Ongoing'}
+          </span>
+          {project.place && (
+            <span className="d-inline-flex align-items-center gap-1" style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>
+              <MapPin size={13} strokeWidth={1.5} /> {project.place}
             </span>
           )}
         </div>
-      </div>
-      
-      {isExpanded && (
-        <div className="card-body bg-white border-top border-light">
-          <p className="text-muted mb-4">{project.description}</p>
-          
-          <div className="row g-3">
-            <div className="col-6">
-              <small className="text-uppercase text-muted d-block" style={{ fontSize: '0.7rem', letterSpacing: '1px' }}>Location</small>
-              <div className="fw-medium text-dark">{project.place || 'N/A'}</div>
-            </div>
-            <div className="col-6">
-              <small className="text-uppercase text-muted d-block" style={{ fontSize: '0.7rem', letterSpacing: '1px' }}>Client</small>
-              <div className="fw-medium text-dark">{project.ownerName || 'Confidential'}</div>
-            </div>
-            
-            {project.status === 'completed' && project.timeline && (
-              <div className="col-12 mt-3">
-                <small className="text-uppercase text-muted d-block" style={{ fontSize: '0.7rem', letterSpacing: '1px' }}>Timeline</small>
-                <div className="fw-medium text-dark">{project.timeline}</div>
+
+        <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', marginBottom: '8px' }}>
+          {project.title}
+        </h4>
+
+        {isExpanded && (
+          <div className="mt-2 mb-3">
+            <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '16px' }}>
+              {project.description}
+            </p>
+            <div className="row g-3 mb-3">
+              <div className="col-6">
+                <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>Location</div>
+                <div style={{ fontSize: '14px', fontWeight: 500 }}>{project.place || 'N/A'}</div>
               </div>
+              <div className="col-6">
+                <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>Client</div>
+                <div style={{ fontSize: '14px', fontWeight: 500 }}>{project.ownerName || 'Confidential'}</div>
+              </div>
+              {project.status === 'completed' && project.timeline && (
+                <div className="col-6">
+                  <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>Timeline</div>
+                  <div style={{ fontSize: '14px', fontWeight: 500 }}>{project.timeline}</div>
+                </div>
+              )}
+              {project.category && (
+                <div className="col-6">
+                  <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>Service</div>
+                  <div style={{ fontSize: '14px', fontWeight: 500 }}>{project.category}</div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        <div className="mt-auto d-flex justify-content-between align-items-center pt-2">
+          <button
+            type="button"
+            className="btn btn-link p-0 text-decoration-none d-inline-flex align-items-center gap-1"
+            style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text-secondary)' }}
+            onClick={onToggle}
+          >
+            {isExpanded ? (
+              <>Less details <ChevronUp size={15} strokeWidth={1.5} /></>
+            ) : (
+              <>Quick preview <ChevronDown size={15} strokeWidth={1.5} /></>
             )}
-          </div>
-          
-          <div className="text-center mt-4">
-            <button className="btn btn-sm btn-outline-secondary w-100 border-0" onClick={onToggle}>
-              Close <i className="fas fa-chevron-up ms-1"></i>
-            </button>
-          </div>
+          </button>
+
+          <Link
+            to={`/projects/${project._id}`}
+            className="d-inline-flex align-items-center gap-1 text-decoration-none"
+            style={{ fontSize: '14px', fontWeight: 500, color: 'var(--accent)' }}
+          >
+            Full page <ArrowRight size={15} strokeWidth={1.5} />
+          </Link>
         </div>
-      )}
+      </div>
     </div>
   );
 };
